@@ -62,7 +62,12 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>📚 Study Notes</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>📚 Study Notes</Text>
+        <TouchableOpacity style={styles.profileButton} onPress={() => router.push('/screens/ProfileScreen')}>
+          <Text style={styles.profileButtonText}>👤</Text>
+        </TouchableOpacity>
+      </View>
       {loading ? (
         <ActivityIndicator size="large" color="#007bff" style={{ marginTop: 40 }} />
       ) : notes.length === 0 ? (
@@ -92,12 +97,25 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     paddingHorizontal: 20,
   },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
   title: {
     fontSize: 24,
     fontWeight: '700',
     textAlign: 'center',
-    marginBottom: 20,
     color: '#2c3e50',
+  },
+  profileButton: {
+    padding: 8,
+    borderRadius: 20,
+    backgroundColor: '#e8ecf0',
+  },
+  profileButtonText: {
+    fontSize: 22,
   },
   emptyText: {
     textAlign: 'center',
